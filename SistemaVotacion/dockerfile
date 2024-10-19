@@ -1,0 +1,18 @@
+# Usar una imagen base de Python
+FROM python:3.8-slim
+
+# Establecer el directorio de trabajo dentro del contenedor
+WORKDIR /app
+
+# Copiar el archivo de Python al contenedor
+COPY node.py .
+
+# Instalar dependencias si es necesario (por ejemplo, si usas librerías)
+COPY requirements.txt .
+RUN pip install -r requirements.txt
+
+# Exponer el puerto 5000
+EXPOSE 5000
+
+# Ejecutar el script del nodo al iniciar el contenedor
+CMD ["python", "node.py"]
